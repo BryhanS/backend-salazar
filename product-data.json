@@ -1,0 +1,11 @@
+[
+  {
+    "id": 1,
+    "title": "Pimientos Rojos",
+    "description": "Pimientos rojos dulces y jugosos.",
+    "price": 0.5,
+    "thumbnail": "vegetable-4.png",
+    "code": "PR9",
+    "stock": 104
+  }
+]
