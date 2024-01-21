@@ -79,7 +79,7 @@ class ProductManager {
       const result = JSON.parse(answer);
       return result;
     } catch (error) {
-      // console.log("error al leer archivo", error);
+      console.log("error al leer archivo", error);
       return this.products;
     }
   }
@@ -92,35 +92,5 @@ class ProductManager {
     }
   }
 }
-const path = "./product-data.json";
-const listProducts = new ProductManager(path);
 
-const product1 = {
-  title: "Pimientos Rojos",
-  description: "Pimientos rojos dulces y jugosos.",
-  price: 0.5,
-  thumbnail: "vegetable-4.png",
-  code: "PR9",
-  stock: 104,
-};
-// Test clase
-async function myTest() {
-  await listProducts.addProducts(product1);
-
-  const response = await listProducts.readArchive();
-  console.log(response);
-
-  // const deleteProduct = await listProducts.deleteProduct(6);
-  // console.log(deleteProduct);
-
-  // let updateinformation = {
-  //   price: 0.5,
-  //   stock: 104,
-  // };
-
-  // const updateProducto = await listProducts.updateProduct(9, updateinformation);
-  // console.log(updateProducto);
-}
-
-//Ejecuto el test.
-myTest();
+module.exports = ProductManager;
