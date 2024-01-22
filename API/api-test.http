@@ -1,0 +1,21 @@
+
+@url
+
+### Test API esta encendido
+GET http://localhost:8080/ HTTP/1.1
+
+### Test API regreso de productos sin query
+
+GET http://localhost:8080/api/products HTTP/1.1
+
+### Test API regreso de productos con query
+
+GET http://localhost:8080/api/products?limit=5 HTTP/1.1
+
+### Test API regreso del ID
+
+GET http://localhost:8080/api/products/2 HTTP/1.1
+
+### Test API regreso del ID erroneo
+
+GET http://localhost:8080/api/products/34123123 HTTP/1.1
