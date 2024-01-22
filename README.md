@@ -7,13 +7,13 @@ Este proyecto, esta destinado aprender el uso practico del backend para mi forma
 Usar este comando para instalar los paquetes dependientes al proyecto
 
 ```bash
-npm install
+$ npm install
 ```
 
 usar el scipt run dev para dar inicio al ambiente de desarrollo
 
 ```basg
-npm run dev
+$ npm run dev
 
 ```
 
