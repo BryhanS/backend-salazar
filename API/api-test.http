@@ -19,3 +19,49 @@ GET http://localhost:8080/api/products/2 HTTP/1.1
 ### Test API regreso del ID erroneo
 
 GET http://localhost:8080/api/products/34123123 HTTP/1.1
+
+
+### Test POST API 1
+
+POST  http://localhost:8080/api/product HTTP/1.1
+Content-Type: application/json
+
+  {
+    "title": "Pan Especial",
+    "description": "Descripción del Pan Especial.",
+    "code": "1",
+    "price": 3.5,
+    "stock": 40,
+    "category": "polo"
+  }
+
+
+### Test POST API 2
+
+POST  http://localhost:8080/api/product HTTP/1.1
+Content-Type: application/json
+
+  {
+    "title": "Pan yema",
+    "description": "Descripción del Pan yema.",
+    "code": "1CA",
+    "price": 1.5,
+    "stock": 30,
+    "category": "polo",
+    "status": false
+  }
+
+
+### Test PUT API Update
+
+PUT http://localhost:8080/api/products/2 HTTP/1.1
+Content-Type: application/json
+
+  {
+    "price": 3,
+    "status": false
+  }
+
+### Test PUT API Delete
+
+DELETE  http://localhost:8080/api/products/2 HTTP/1.1

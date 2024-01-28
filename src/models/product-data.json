@@ -1,0 +1,13 @@
+[
+  {
+    "id": 1,
+    "title": "Pan Especial",
+    "description": "Descripción del Pan Especial.",
+    "code": "1",
+    "price": 3.5,
+    "status": true,
+    "stock": 40,
+    "category": "polo",
+    "thumbnail": []
+  }
+]

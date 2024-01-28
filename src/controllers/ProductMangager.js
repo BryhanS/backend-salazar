@@ -1,16 +1,38 @@
 const fs = require("fs");
 
 class ProductManager {
-  static lastId = 0;
   constructor(path) {
     this.path = path;
     this.products = [];
+    this.lastId = 0;
+
+    this.startFile();
+  }
+  async startFile() {
+    try {
+      const answer = await fs.promises.readFile(this.path, "utf-8");
+      this.products = JSON.parse(answer);
+      if (this.products.length > 0) {
+        this.lastId = Math.max(...this.products.map((p) => p.id));
+      }
+    } catch (error) {
+      console.log("error al leer archivo", error);
+      return this.products;
+    }
   }
 
-  async addProducts({ title, description, price, thumbnail, code, stock }) {
+  async addProducts({
+    title,
+    description,
+    price,
+    thumbnail,
+    code,
+    stock,
+    category,
+    status,
+  }) {
     const newArray = await this.readArchive();
-    console.log(newArray);
-    if (!title || !description || !price || !thumbnail || !code || !stock) {
+    if (!title || !description || !price || !code || !stock) {
       console.error("Todos los datos tienen que estar completos");
       return;
     }
@@ -18,15 +40,21 @@ class ProductManager {
       console.log("ingresa un codigo distinto");
       return;
     }
+    if (!status || !thumbnail) {
+      status = true;
+      thumbnail = [];
+    }
 
     const newProduct = {
-      id: ++ProductManager.lastId,
+      id: ++this.lastId,
       title,
       description,
-      price,
-      thumbnail,
       code,
+      price,
+      status,
       stock,
+      category,
+      thumbnail,
     };
 
     newArray.push(newProduct);
@@ -50,7 +78,6 @@ class ProductManager {
     }
   }
 
-  //desafio 2 entregable
   async updateProduct(id, newInformation) {
     try {
       const newArray = await this.readArchive();
@@ -76,7 +103,12 @@ class ProductManager {
   async readArchive() {
     try {
       const answer = await fs.promises.readFile(this.path, "utf-8");
-      const result = JSON.parse(answer);
+      this.products = JSON.parse(answer);
+
+      if (this.products.length > 0) {
+        this.lastId = Math.max(...this.products.map((p) => p.id));
+      }
+
       return result;
     } catch (error) {
       console.log("error al leer archivo", error);
