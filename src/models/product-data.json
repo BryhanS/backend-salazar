@@ -9,5 +9,16 @@
     "stock": 40,
     "category": "polo",
     "thumbnail": []
+  },
+  {
+    "id": 2,
+    "title": "Pan Especial",
+    "description": "Descripción del Pan Especial.",
+    "code": "AS1",
+    "price": 3.5,
+    "status": true,
+    "stock": 40,
+    "category": "polo",
+    "thumbnail": []
   }
 ]
