@@ -103,12 +103,7 @@ class ProductManager {
   async readArchive() {
     try {
       const answer = await fs.promises.readFile(this.path, "utf-8");
-      this.products = JSON.parse(answer);
-
-      if (this.products.length > 0) {
-        this.lastId = Math.max(...this.products.map((p) => p.id));
-      }
-
+      const result = JSON.parse(answer);
       return result;
     } catch (error) {
       console.log("error al leer archivo", error);
