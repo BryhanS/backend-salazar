@@ -27,6 +27,29 @@ app.set("views", "./src/views");
 // app.use("/api/carts", cartRouter);
 app.use("/", viewRouter);
 
-app.listen(PUERTO, () => {
-  console.log(`Escuchando en el puerto ${PUERTO}`);
+const httpServer = app.listen(PUERTO, () => {
+  console.log(`Escuchando en el puerto ${PUERTO} `);
+});
+
+const ProductManager = require("./controllers/ProductMangager.js");
+const productManager = new ProductManager("./src/models/product-data.json");
+const socket = require("socket.io");
+
+const io = socket(httpServer);
+
+io.on("connection", async (socket) => {
+  console.log("Un cliente se conecto");
+
+  socket.emit("productos", await productManager.getProducts());
+
+  socket.on("eliminarProducto", async (id) => {
+    await productManager.deleteProduct(id);
+    io.sockets.emit("productos", await productManager.getProducts());
+  });
+
+  socket.on("agregarProducto", async (producto) => {
+    console.log(producto);
+    await productManager.addProducts(producto);
+    io.sockets.emit("producto", await productManager.getProducts());
+  });
 });
