@@ -1,46 +1,52 @@
 [
   {
-    "id": 5,
-    "title": "121212",
-    "description": "212121",
-    "code": "1212",
-    "price": "12",
+    "title": "Pan de Centeno",
+    "description": "Pan de centeno recién horneado, con un sabor robusto y delicioso.",
+    "code": "PN001",
+    "price": 2.99,
     "status": true,
-    "stock": "121",
-    "category": "121",
-    "thumbnail": []
+    "stock": 50,
+    "category": "Panes Especiales",
+    "thumbnail": ["https://example.com/pan-de-centeno-thumbnail.jpg"]
   },
   {
-    "id": 7,
-    "title": "12121",
-    "description": "12121",
-    "code": "12122",
-    "price": "121212",
+    "title": "Pan Integral Multigrano",
+    "description": "Pan integral con una mezcla de granos saludables, perfecto para una dieta equilibrada.",
+    "code": "PN002",
+    "price": 3.49,
     "status": true,
-    "stock": "1212",
-    "category": "21212",
-    "thumbnail": "12121"
+    "stock": 40,
+    "category": "Panes Especiales",
+    "thumbnail": ["https://example.com/pan-integral-multigrano-thumbnail.jpg"]
   },
   {
-    "id": 8,
-    "title": "12121",
-    "description": "12121",
-    "code": "1212222",
-    "price": "121212",
+    "title": "Pan de Espelta",
+    "description": "Pan de espelta orgánico, ideal para aquellos que buscan una opción de pan más saludable.",
+    "code": "PN003",
+    "price": 3.99,
     "status": true,
-    "stock": "1212",
-    "category": "21212",
-    "thumbnail": "12121"
+    "stock": 30,
+    "category": "Panes Especiales",
+    "thumbnail": ["https://example.com/pan-de-espelta-thumbnail.jpg"]
   },
   {
-    "id": 9,
-    "title": "12121",
-    "description": "12121",
-    "code": "121222222",
-    "price": "121212",
+    "title": "Baguette Tradicional",
+    "description": "Baguette crujiente y deliciosa, perfecta para acompañar comidas o hacer bocadillos.",
+    "code": "PN004",
+    "price": 1.99,
     "status": true,
-    "stock": "1212",
-    "category": "21212",
-    "thumbnail": "12121"
+    "stock": 60,
+    "category": "Panes Diarios",
+    "thumbnail": ["https://example.com/baguette-tradicional-thumbnail.jpg"]
+  },
+  {
+    "title": "Pan de Molde Blanco",
+    "description": "Pan de molde blanco clásico, perfecto para hacer sándwiches o tostadas.",
+    "code": "PN005",
+    "price": 1.49,
+    "status": true,
+    "stock": 80,
+    "category": "Panes Diarios",
+    "thumbnail": ["https://example.com/pan-de-molde-blanco-thumbnail.jpg"]
   }
 ]
