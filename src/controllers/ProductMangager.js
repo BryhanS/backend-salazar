@@ -21,16 +21,7 @@ class ProductManager {
     }
   }
 
-  async addProducts({
-    title,
-    description,
-    price,
-    thumbnail,
-    code,
-    stock,
-    category,
-    status,
-  }) {
+  async addProducts({}) {
     const newArray = await this.readArchive();
     if (!title || !description || !price || !code || !stock) {
       console.error("Todos los datos tienen que estar completos");
