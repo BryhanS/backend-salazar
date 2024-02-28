@@ -1,13 +1,13 @@
 const express = require("express");
 const router = express.Router();
 
-const ProductManager = require("../controllers/ProductMangager.js");
-const productManganer = new ProductManager("./src/models/product-data.json");
+const ProductManager = require("../controllers/product-manager-db.js");
+const productManager = new ProductManager();
 
 router.get("/", async (req, res) => {
   try {
     const limit = req.query.limit;
-    const productos = await productManganer.getProducts();
+    const productos = await productManager.getProducts();
 
     if (!limit) {
       res.json(productos);
@@ -24,7 +24,7 @@ router.get("/", async (req, res) => {
 router.get("/:pid", async (req, res) => {
   try {
     const id = req.params.pid;
-    const producto = await productManganer.getProductById(parseInt(id));
+    const producto = await productManager.getProductById(id);
 
     if (!producto) {
       res.json({ error: "producto no encontrado" });
@@ -40,7 +40,7 @@ router.get("/:pid", async (req, res) => {
 router.post("", async (req, res) => {
   const newProduct = req.body;
   try {
-    await productManganer.addProducts(newProduct);
+    await productManager.addProducts(newProduct);
     res.status(201).json({ message: "Producto agregado exitosamente" });
   } catch (error) {
     res.status(500).json({ error: "error del servidor" });
@@ -52,7 +52,7 @@ router.put("/:pid", async (req, res) => {
   const update = req.body;
 
   try {
-    await productManganer.updateProduct(parseInt(id), update);
+    await productManager.updateProduct(id, update);
     res.status(201).json({ message: "Producto modificado exitosamente" });
   } catch (error) {
     res.status(500).json({ error: "erro del servidor" });
@@ -63,7 +63,7 @@ router.delete("/:pid", async (req, res) => {
   const id = req.params.pid;
 
   try {
-    await productManganer.deleteProduct(parseInt(id));
+    await productManager.deleteProduct(id);
     res.status(201).json({ message: "Producto eliminado exitosamente" });
   } catch (error) {
     res.status(500).json({ error: "erro del servidor" });

@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
 
-const CartManager = require("../controllers/CartManager.js");
-const cartManager = new CartManager("./src/models/cart-data.json");
+const CartManager = require("../controllers/cart-manager-db.js");
+const cartManager = new CartManager();
 
 router.get("/:cid", async (req, res) => {
   try {
