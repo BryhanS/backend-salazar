@@ -13,7 +13,7 @@ GET http://localhost:8080/api/products?limit=5 HTTP/1.1
 
 ### Test API regreso del ID
 
-GET http://localhost:8080/api/products/2 HTTP/1.1
+GET http://localhost:8080/api/products/65dd5e1c57734281dd678438 HTTP/1.1
 
 ### Test API regreso del ID erroneo
 
