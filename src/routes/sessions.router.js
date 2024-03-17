@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const UserModel = require("../models/user.molde.js");
+const { isValidPassword } = require("../utils/hashbcryp.js");
 const passport = require("passport");
 
 // login
@@ -28,11 +29,29 @@ router.get("/faillogin", (req, res) => {
   res.send({ error: "Fallo el login!" });
 });
 
+//logout
 router.get("/logout", (req, res) => {
   if (req.session.login) {
     req.session.destroy();
   }
   res.status(200).send({ message: "Login eliminado" });
 });
+
+// Github
+router.get(
+  "/github",
+  passport.authenticate("github", { scope: ["user:email"] }),
+  async (req, res) => {}
+);
+
+router.get(
+  "githubcallback",
+  passport.authenticate("github", { failureRedirect: "/login" }),
+  async (req, res) => {
+    req.session.user = req.user;
+    req.session.login = true;
+    res.redirect("/profile");
+  }
+);
 
 module.exports = router;
