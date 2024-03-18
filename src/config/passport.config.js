@@ -3,7 +3,7 @@ const local = require("passport-local");
 const GitHubStrategy = require("passport-github2");
 
 //Me traigo el UserModel y las funciones de bcrypt.
-const UserModel = require("../models/user.model.js");
+const UserModel = require("../models/user.molde.js");
 const { createHash, isValidPassword } = require("../utils/hashbcryp.js");
 
 const LocalStrategy = local.Strategy;
@@ -88,10 +88,10 @@ const initializePassport = () => {
           if (!user) {
             let newUser = {
               first_name: profile._json.name,
-              last_name: "",
+              last_name: "secreto",
               age: 37,
               email: profile._json.email,
-              password: "",
+              password: "secreto",
             };
             let result = await UserModel.create(newUser);
             done(null, result);
