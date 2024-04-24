@@ -3,7 +3,7 @@ const local = require("passport-local");
 const GitHubStrategy = require("passport-github2");
 
 //Me traigo el UserModel y las funciones de bcrypt.
-const UserModel = require("../models/user.molde.js");
+const UserModel = require("../models/user.model.js");
 const { createHash, isValidPassword } = require("../utils/hashbcryp.js");
 
 const LocalStrategy = local.Strategy;

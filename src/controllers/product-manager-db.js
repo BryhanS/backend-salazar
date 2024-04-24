@@ -1,11 +1,11 @@
-const ProductService = require("../services/product.services.js")
-const productService = new ProductService()
+const ProductRepository = require("../repositories/product.repository");
+const productRepository = new ProductRepository();
 
 class ProductManager {
   async addProduct(req, res) {
     const newProduct = req.body;
     try {
-      await productService.addProduct(newProduct);
+      await productRepository.addProduct(newProduct);
       res.status(201).json({ message: "Producto agregado exitosamente" });
     } catch (error) {
       res.status(500).json({ error: "error del servidor" });
@@ -15,14 +15,14 @@ class ProductManager {
   async getProducts(req, res) {
     try {
       const { limit = 10, page = 1, sort, query } = req.query;
-  
-      const products = await productService.getProducts({
+
+      const products = await productRepository.getProducts({
         limit: parseInt(limit),
         page: parseInt(page),
         sort,
         query,
       });
-  
+
       res.json({
         status: "success",
         payload: products,
@@ -47,11 +47,11 @@ class ProductManager {
     }
   }
 
-  async getProductById(req,res) {
+  async getProductById(req, res) {
     try {
       const id = req.params.pid;
-      const producto = await productService.getProductById(id);
-  
+      const producto = await productRepository.getProductById(id);
+
       if (!producto) {
         res.json({ error: "producto no encontrado" });
       } else {
@@ -63,12 +63,12 @@ class ProductManager {
     }
   }
 
-  async updateProduct(req,res) {
+  async updateProduct(req, res) {
     const id = req.params.pid;
     const update = req.body;
-  
+
     try {
-      await productService.updateProduct(id, update);
+      await productRepository.updateProduct(id, update);
       res.status(201).json({ message: "Producto modificado exitosamente" });
     } catch (error) {
       res.status(500).json({ error: "erro del servidor" });
@@ -79,7 +79,7 @@ class ProductManager {
     const id = req.params.pid;
 
     try {
-      await productService.deleteProduct(id);
+      await productRepository.deleteProduct(id);
       res.status(201).json({ message: "Producto eliminado exitosamente" });
     } catch (error) {
       res.status(500).json({ error: "erro del servidor" });

@@ -1,11 +1,11 @@
 const CartModel = require("../models/cart.model.js");
-const CartService = require("../services/cart.services.js")
-const cartService = new CartService();
+const CartRepository = require("../repositories/cart.repository.js");
+const cartRepository = new CartRepository();
 
 class CartManager {
   async createCart(req, res) {
     try {
-      const newCart = await cartService.createCart();
+      const newCart = await cartRepository.createCart();
       res.json(newCart);
     } catch (error) {
       console.error("Error al crear un nuevo carrito", error);
@@ -16,7 +16,7 @@ class CartManager {
   async getCartById(req, res) {
     const cartId = req.params.cid;
     try {
-      const cart = await cartManager.getCartById(cartId);
+      const cart = await cartRepository.getCartById(cartId);
       res.json(cart.products);
     } catch (error) {
       console.error("Error al obtner el carrito", error);
@@ -24,12 +24,16 @@ class CartManager {
     }
   }
 
-  async addProductAtCart(req,res) {
+  async addProductAtCart(req, res) {
     const cId = req.params.cid;
     const pId = req.params.pid;
     const quantity = req.body.quantity || 1;
     try {
-      const updateCart = await cartManager.addProductAtCart(cId, pId, quantity);
+      const updateCart = await cartRepository.addProductAtCart(
+        cId,
+        pId,
+        quantity
+      );
       console.log(quantity);
       res.json(updateCart.products);
     } catch (error) {
@@ -38,11 +42,14 @@ class CartManager {
     }
   }
 
-  async deleteCartProduct(req,res) {
+  async deleteCartProduct(req, res) {
     const cId = req.params.cid;
     const pId = req.params.pid;
     try {
-      const deleteCartProduct = await cartManager.deleteCartProduct(cId, pId);
+      const deleteCartProduct = await cartRepository.deleteCartProduct(
+        cId,
+        pId
+      );
       res.json(deleteCartProduct.products);
     } catch (error) {
       console.error("Error al eliminar un producto del carrito", error);
@@ -50,10 +57,10 @@ class CartManager {
     }
   }
 
-  async deleterCartAllProduct(req,res) {
+  async deleterCartAllProduct(req, res) {
     const cId = req.params.cid;
     try {
-      const deleteAllProduct = await cartManager.deleterCartAllProduct(cId);
+      const deleteAllProduct = await cartRepository.deleterCartAllProduct(cId);
       res.json(deleteAllProduct.products);
     } catch (error) {
       console.error(
@@ -64,7 +71,7 @@ class CartManager {
     }
   }
 
-  async addProductByArray(req,res) {
+  async addProductByArray(req, res) {
     const cId = req.params.cid;
     const information = req.body;
     try {
@@ -72,7 +79,10 @@ class CartManager {
         console.log("ingresa dato");
         return null;
       }
-      const updateCart = await cartManager.addProductByArray(cId, information);
+      const updateCart = await cartRepository.addProductByArray(
+        cId,
+        information
+      );
       res.json(updateCart.products);
     } catch (error) {
       console.error("Error al agregar al carrito", error);
