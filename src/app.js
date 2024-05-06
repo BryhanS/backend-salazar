@@ -10,10 +10,11 @@ const passport = require("passport");
 const viewRouter = require("./routes/views.router.js");
 const userRouter = require("./routes/user.router.js");
 const sessionRouter = require("./routes/sessions.router.js");
+const mockingRouter = require("./routes/mocking.router.js");
 const initializePassport = require("./config/passport.config.js");
 
-const productRouter = require('./routes/products.router.js')
-const cartRouter = require('./routes/cart.router.js')
+const productRouter = require("./routes/products.router.js");
+const cartRouter = require("./routes/cart.router.js");
 
 //Handlebars
 app.engine("handlebars", exphbs.engine());
@@ -47,6 +48,7 @@ app.use("/api/users", userRouter);
 app.use("/api/sessions", sessionRouter);
 app.use("/api/products", productRouter);
 app.use("/api/carts", cartRouter);
+app.use("/", mockingRouter);
 app.use("/", viewRouter);
 
 app.listen(PUERTO, () => {
