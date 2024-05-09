@@ -4,7 +4,6 @@ const session = require("express-session");
 const MongoStore = require("connect-mongo");
 const exphbs = require("express-handlebars");
 const app = express();
-const PUERTO = 8080;
 require("./database.js");
 const passport = require("passport");
 const viewRouter = require("./routes/views.router.js");
@@ -15,6 +14,10 @@ const initializePassport = require("./config/passport.config.js");
 
 const productRouter = require("./routes/products.router.js");
 const cartRouter = require("./routes/cart.router.js");
+
+const configObject = require("./config/config.js");
+const { mongo_url, puerto } = configObject;
+console.log(configObject);
 
 //Handlebars
 app.engine("handlebars", exphbs.engine());
@@ -51,6 +54,6 @@ app.use("/api/carts", cartRouter);
 app.use("/", mockingRouter);
 app.use("/", viewRouter);
 
-app.listen(PUERTO, () => {
-  console.log(`Escuchando en el puerto ${PUERTO} `);
+app.listen(puerto, () => {
+  console.log(`Escuchando en el puerto ${puerto} `);
 });
