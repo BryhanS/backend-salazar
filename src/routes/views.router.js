@@ -15,4 +15,12 @@ router.get("/register", viewController.register);
 
 router.get("/", viewController.renderHombe);
 
+router.get("/reset-password", viewController.renderResetPassword);
+
+router.get("/password", viewController.renderChangePassword);
+
+router.get("/confirmacion-envio", viewController.renderConfirmation);
+
+router.get("/panel-premium", viewController.renderPremium);
+
 module.exports = router;
