@@ -5,6 +5,7 @@ const MongoStore = require("connect-mongo");
 const exphbs = require("express-handlebars");
 const app = express();
 require("./database.js");
+const PUERTO = 8080;
 const passport = require("passport");
 const viewRouter = require("./routes/views.router.js");
 const userRouter = require("./routes/user.router.js");
@@ -54,6 +55,6 @@ app.use("/api/carts", cartRouter);
 app.use("/", mockingRouter);
 app.use("/", viewRouter);
 
-app.listen(puerto, () => {
-  console.log(`Escuchando en el puerto ${puerto} `);
+app.listen(PUERTO, () => {
+  console.log(`Escuchando en el puerto ${PUERTO} `);
 });
