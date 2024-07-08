@@ -1,21 +1,5 @@
 const winston = require("winston");
 
-// const logger = winston.createLogger({
-//     //Le pasamos un objeto de configuracion para crear un logger.
-//     //Configurar un transporte a nivel de consola para funcione solo en HTTP.
-//     transports: [
-//         new winston.transports.Console({level: "http"}),
-
-//         //Agregamos un nuevo transporte:
-//         new winston.transports.File({
-//             filename: "./errors.log",
-//             level: "warn"
-//         })
-//     ]
-// })
-
-//Personalizamos nuestros niveles:
-
 const niveles = {
   nivel: {
     fatal: 0,
